@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import smtplib
 
-BUY_PRICE = 100000
-EMAIL = "mitulsingh182@gmail.com"
-PASSWORD = "abc@3182"
-url = "https://www.amazon.in/dp/B08L5V1SBB/?pf_rd_r=TBR1PZQWF82WK763FZNP&pf_rd_p=3e9a1841-acb2-4cb1-b49f-a7f195b94d05&pd_rd_r=f201ac6f-5283-41b4-92c5-368705589f3c&pd_rd_w=hXrf7&pd_rd_wg=HH40b&ref_=pd_gw_unk"
+BUY_PRICE = Your price
+EMAIL = "Your Email"
+PASSWORD = "Your Password"
+url = "URL for your product"
 headers = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36",
-    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+    "User-Agent": "User-Agent",
+    "Accept-Language": "Accepted Languages",
 }
 response = requests.get(url, headers=headers).text
 soup = BeautifulSoup(response, "lxml")
@@ -25,7 +25,7 @@ price = price.replace(",", "")
 print(price)
 
 if int(float(price)) < BUY_PRICE:
-    message = f"Hey Mitul, you can now buy your favourite phone for {price}"
+    message = f"Hey User, you can now buy your favourite phone for {price}"
 
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
